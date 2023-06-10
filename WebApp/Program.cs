@@ -8,6 +8,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 var app = builder.Build();
 
+app.UseMiddleware<TestMiddleware>();
+
 var context = app.Services.CreateScope().ServiceProvider
     .GetRequiredService<AppDbContext>();
 SeedData.SeedDatabase(context);
